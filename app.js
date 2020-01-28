@@ -1,27 +1,11 @@
-// const fs = require("fs");
-// a constant fs and its value comes from the return value of fs
-// require loads in fs module built in node
-
-// fs.writeFileSync("notes.txt", "My name is Michelle");
-// takes in two string arguments (1 name of File, 2 data array contents to put inside)
-
-// fs.appendFileSync("notes.txt", "\nhello")
-// const add = require('./utils.js');
-const notes = require('./notes.js')
-// const name = 'Michelle'
-// const sum = add(4, 2)
-// console.log(sum)
-// const getNotes = getnotes()
-// console.log(getNotes)
-
 const chalk = require('chalk')
 const yargs = require('yargs')
-// const command = process.argv[2]
+
+const notes = require("./notes.js");
+//object wiht two properties 
 
 //Customize yargs version
 yargs.version("1.1.0");
-
-
 
 // Create add command 
 yargs.command({
@@ -41,7 +25,8 @@ yargs.command({
       }
   },
   handler: function(argv) {
-    console.log("Adding a new note", argv);
+      //call addNote method from notes
+    notes.addNote(argv.title, argv.body);
   }
 });
 
@@ -54,7 +39,7 @@ yargs.command({
     handler: function () {
         console.log('Removing note')
     }
-})``
+})
 
 yargs.command({
     command: 'list',
