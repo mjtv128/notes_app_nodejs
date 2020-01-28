@@ -18,32 +18,34 @@ const chalk = require('chalk')
 const yargs = require('yargs')
 // const command = process.argv[2]
 
-// console.log(process.argv)
-
 //Customize yargs version
-yargs.version('1.1.0')
+yargs.version("1.1.0");
+
+
 
 // Create add command 
 yargs.command({
-    command: 'add',
-    describe: 'Add a new note',
-    builder: {
-        title: {
-            describe: 'Note title',
-            demandOption: true,
-            //false by default
-            type: 'string'
-        },
-        body: {
-            describe: 'Note Description',
-            type: 'string',
-            demandOption: true
-        }
-    },
-    handler: function (argv) {
-        notes.addNote(argv.title, argv.body)
-    }
-})
+  command: "add",
+  describe: "Add a new note",
+  builder: {
+      title: {
+          describe: 'Note title',
+          demandOption: true,
+          //false by default
+          type: 'string'
+      },
+      body: {
+          describe: 'Note Description',
+          type: 'string',
+          demandOption: true
+      }
+  },
+  handler: function(argv) {
+    console.log("Adding a new note", argv);
+  }
+});
+
+
 
 //Remove Command
 yargs.command({
@@ -52,7 +54,7 @@ yargs.command({
     handler: function () {
         console.log('Removing note')
     }
-})
+})``
 
 yargs.command({
     command: 'list',
@@ -72,16 +74,7 @@ yargs.command({
 
 
 
-//add, remove, read, list notes
+// //add, remove, read, list notes
 
-//goes through the process parsing the details without printing
+// //goes through the process parsing the details without printing
 yargs.parse()
-// console.log(yargs.argv)
-
-
-// if (command === 'add') {
-//     console.log('Adding note!')
-// } else if (command === 'remove') {
-//     console.log("Removing note!")
-// }
-
